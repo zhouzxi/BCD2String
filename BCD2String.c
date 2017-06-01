@@ -12,37 +12,37 @@ int main()
 {
     int  iRetVal = 0;
     char szBCDData[3] = {0x75, 0x39};
-	char szDigitBuf[10] = {0};
+    char szDigitBuf[10] = {0};
 
-	iRetVal = BCD2String(szBCDData, strlen(szBCDData), szDigitBuf, sizeof(szDigitBuf));
-	if (iRetVal != 0)
-	{
-	    printf("exec BCD2String failed!\n");
+    iRetVal = BCD2String(szBCDData, strlen(szBCDData), szDigitBuf, sizeof(szDigitBuf));
+    if (iRetVal != 0)
+    {
+       printf("exec BCD2String failed!\n");
+       return -1;
+    }
+
+    printf("szDigitBuf=%s!\n", szDigitBuf);
+
+    iRetVal = String2BCD("19", 2, szBCDData, 1);
+    if (iRetVal != 0)
+    {
+	printf("exec String2BCD failed!\n");
         return -1;
-	}
+    }
 
-	printf("szDigitBuf=%s!\n", szDigitBuf);
-
-	iRetVal = String2BCD("19", 2, szBCDData, 1);
-	if (iRetVal != 0)
-	{
-	    printf("exec String2BCD failed!\n");
-        return -1;
-	}
-
-	printf("szBCDData=%x!\n", szBCDData[0]);
+    printf("szBCDData=%x!\n", szBCDData[0]);
 
     memset(szDigitBuf, 0x00, sizeof(szDigitBuf));
-	iRetVal = BCD2String(szBCDData, 1, szDigitBuf, 2);
-	if (iRetVal != 0)
-	{
-	    printf("exec BCD2String failed!\n");
+    iRetVal = BCD2String(szBCDData, 1, szDigitBuf, 2);
+    if (iRetVal != 0)
+    {
+	printf("exec BCD2String failed!\n");
         return -1;
-	}
+    }
 
-	printf("szDigitBuf=%s!\n", szDigitBuf);
+    printf("szDigitBuf=%s!\n", szDigitBuf);
 
-	return 0;
+    return 0;
 }
 
 
